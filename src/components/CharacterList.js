@@ -41,6 +41,7 @@ export default function CharacterList() {
         {character.map((item, index) => {
           return <CharacterCard 
                     key={index}
+                    id={item.id}
                     name={item.name}
                     image={item.image}
                   />
