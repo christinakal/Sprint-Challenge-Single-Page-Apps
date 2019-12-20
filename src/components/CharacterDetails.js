@@ -28,11 +28,12 @@ export default function CharacterDetails() {
                 <Card>
                     <CardImg top width="100%" src={characterDetails.image} alt="Card image cap" />
                     <CardBody>
-                    <CardTitle>{characterDetails.name}</CardTitle>
-                    <CardSubtitle>Card subtitle</CardSubtitle>
-                    <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+                    <CardTitle><h1>{characterDetails.name}</h1></CardTitle>
+                    <CardSubtitle><h3>Gender: {characterDetails.gender}</h3></CardSubtitle>
+                    <CardSubtitle><h3>Species: {characterDetails.species}</h3></CardSubtitle>
+                    <CardSubtitle><h3>Status: {characterDetails.status}</h3></CardSubtitle>
                     <Link to={`/characters-list/`}>
-                        <Button>Back</Button>
+                        <Button color="info">Back</Button>
                     </Link>
                     </CardBody>
                 </Card>
