@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 
-export default function SearchForm() {
+export default function SearchForm(props) {
+
+  function handleChanges(event){
+        event.preventDefault();
+
+        props.onSearch(event.target.value);
+    }
  
   return (
     <section className="search-form">
@@ -13,9 +19,8 @@ export default function SearchForm() {
               id="search" 
               type="text" 
               placeholder="Search" 
-              // onChange={handleChanges}
+              onChange={handleChanges}
               name="name"
-              // value={member.name}
           />
             </div>
       </form>

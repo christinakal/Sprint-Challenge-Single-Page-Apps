@@ -6,6 +6,19 @@ import SearchForm from "./SearchForm.js";
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
   const [character, setCharacter] = useState([]);
+  const [allCharacters, setAllCharacters] = useState([]);
+
+  function onSearch(searchName){
+        //console.log('seach', searchName);
+
+        if( searchName && searchName.length > 0 ){
+            setCharacter(allCharacters.filter( character => {
+                if( character.name.toLowerCase().indexOf(searchName.toLowerCase()) > -1 ) return true;
+            }));
+        }else{
+            setCharacter(allCharacters);
+        }
+    }
 
   useEffect(() => {
     // TODO: Add API Request here - must run in `useEffect`
@@ -15,13 +28,14 @@ export default function CharacterList() {
          .then(res => {
              console.log(res.data.results);
              setCharacter(res.data.results);
+             setAllCharacters(res.data.results);
          })
          .catch((error) => console.log('Error:', error));
   }, []);
 
   return (
-    <section className="character-list">
-    <SearchForm />
+    <section>
+    <SearchForm onSearch={onSearch}/>
       <div className="character-list">
         {character.map((item, index) => {
           return <CharacterCard 
